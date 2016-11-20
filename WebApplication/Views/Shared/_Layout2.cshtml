@@ -121,10 +121,10 @@
                 </div>
                 <div class="tanks-display">
                     <ul>
-                        @foreach (string s in ViewBag.ActiveTanks)
+                        @for (int i=0; i < ViewBag.ActiveTanks.Length; i++)
                         {
                             <li>
-                                @s
+                                <a href="~/Home/Index/@ViewBag.ActiveTankIds[i].ToString()"> @ViewBag.ActiveTank </a>
                             </li>
                         }
                     </ul>
@@ -141,6 +141,7 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
+    @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 </body>
 </html>
