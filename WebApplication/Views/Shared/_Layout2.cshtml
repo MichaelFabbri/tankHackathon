@@ -11,8 +11,10 @@
     <title> @ViewBag.Title - Optimizing Tank Management </title>
     @Scripts.Render("~/bundles/modernizr")
     <style>
-        * {
-            position : relative;
+        *,
+        *:after,
+        *:before {
+            box-sizing: border-box;
         }
 
         .flex {
@@ -35,18 +37,20 @@
     }
  .sidebar {
      position: fixed;
-     width: 15%;
+     width: 16%;
      overflow-y: scroll;
      height: 100%;
      background:#D3CBC4; /* yellow under waterby */
  }
  .content {
-    width: 80%;
+    width: 84%;
     height: auto;
     outline: 1px solid;
     position: absolute;
     right: 0;
  }
+
+
 
  .tanks-display > ul {
      list-style : none;
@@ -54,19 +58,10 @@
 
         .tanks-display > ul > li {
             height: 50px;
-            -moz-box-shadow: inset 0px 1px 3px 0px #91b8b3;
-            -webkit-box-shadow: inset 0px 1px 3px 0px #91b8b3;
             box-shadow: inset 0px 1px 3px 0px #91b8b3;
-            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #768d87), color-stop(1, #6c7c7c));
-            background: -moz-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
-            background: -webkit-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
-            background: -o-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
-            background: -ms-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
             background: linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#768d87', endColorstr='#6c7c7c',GradientType=0);
             background-color: #768d87;
-            -moz-border-radius: 5px;
-            -webkit-border-radius: 5px;
             border-radius: 5px;
             border: 1px solid #566963;
             display: inline-block;
@@ -81,11 +76,6 @@
         }
 
 .tanks-display > ul > li :hover {
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6c7c7c), color-stop(1, #768d87));
-	background:-moz-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
-	background:-webkit-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
-	background:-o-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
-	background:-ms-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
 	background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c7c7c', endColorstr='#768d87',GradientType=0);
 	background-color:#6c7c7c;
@@ -95,7 +85,6 @@
 	top:1px;
 }
 
- }
  .scale-to-container {
      max-width:90%;
     max-height:90%;
@@ -105,58 +94,16 @@
      max-width : 70%;
      max-height : 70%;
  }
- .tanks-toggle {
-     position : relative;
-     width : 100%;
-     height : 150px;
-     margin-bottom : 20px;
- }
- .list-toggle-button {
-     width : 50%;
-	-moz-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
-	box-shadow:inset 0px 1px 0px 0px #7a8eb9;
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #637aad), color-stop(1, #5972a7));
-	background:-moz-linear-gradient(top, #637aad 5%, #5972a7 100%);
-	background:-webkit-linear-gradient(top, #637aad 5%, #5972a7 100%);
-	background:-o-linear-gradient(top, #637aad 5%, #5972a7 100%);
-	background:-ms-linear-gradient(top, #637aad 5%, #5972a7 100%);
-	background:linear-gradient(to bottom, #637aad 5%, #5972a7 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#637aad', endColorstr='#5972a7',GradientType=0);
-	background-color:#637aad;
-	border:1px solid #314179;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:13px;
-	font-weight:bold;
-	padding:6px 12px;
-	text-decoration:none;
-}
-.list-toggle-button:hover {
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5972a7), color-stop(1, #637aad));
-	background:-moz-linear-gradient(top, #5972a7 5%, #637aad 100%);
-	background:-webkit-linear-gradient(top, #5972a7 5%, #637aad 100%);
-	background:-o-linear-gradient(top, #5972a7 5%, #637aad 100%);
-	background:-ms-linear-gradient(top, #5972a7 5%, #637aad 100%);
-	background:linear-gradient(to bottom, #5972a7 5%, #637aad 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5972a7', endColorstr='#637aad',GradientType=0);
-	background-color:#5972a7;
-}
-.list-toggle-button:active {
-	position:relative;
-	top:1px;
-}
+        .tanks-toggle {
+            position: relative;
+            width: 100%;
+            height: 150px;
+            margin-bottom: 20px;
+        }
 
- }
- #active-tanks-toggle {
+        
 
- }
-  #all-tanks-toggle {
- }
-
-    </style>
+</style>
 
 </head>
 <body>
@@ -165,11 +112,11 @@
         <section class="sidebar">
             <div>
                 <div class="tanks-toggle flex flex-row">
-                    <div id="active-tanks-toggle" class="list-toggle-button scale-to-container-sm active">
-                        <img src="~/Images/active-tanks.png" />
+                    <div id="active-tanks-toggle" class="flex-item-scale list-toggle-button active">
+                        <img class="scale-to-container-sm"  src="~/Images/active-tanks.png" />
                     </div>
-                    <div id="all-tanks-toggle" class="list-toggle-button scale-to-container-sm">
-                        <img src="~/Images/all-tanks.png" />
+                    <div id="all-tanks-toggle" class="flex-item-scale list-toggle-button">
+                        <img class="scale-to-container-sm" src="~/Images/all-tanks.png" />
                     </div>
                 </div>
                 <div class="tanks-display">
