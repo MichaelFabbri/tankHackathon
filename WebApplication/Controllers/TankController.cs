@@ -291,7 +291,7 @@ namespace WebApplication.Controllers
                             ReadingValue = Convert.ToDouble(reader["readingValue"])
                         });
                     } while (reader.Read());
-
+                    curr.sensors = ls.ToArray();
                 }
             }
             catch (Exception ex) { return "Bad: " + ex.Message; }
