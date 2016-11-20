@@ -33,6 +33,7 @@ namespace WebApplication
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/slidebars.css",
                       "~/Content/style.css",
                       "~/Content/style-responsive.css",
                       "~/Content/bootstrap.css",

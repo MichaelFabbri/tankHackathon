@@ -197,6 +197,7 @@
     <Content Include="Content\icomoon-weather.css" />
     <Content Include="Content\jquery-ui-1.10.3.css" />
     <Content Include="Content\simple-line-icons.css" />
+    <Content Include="Content\slidebars.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
