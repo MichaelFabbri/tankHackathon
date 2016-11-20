@@ -23,12 +23,12 @@
                 </div>
                 <div class="tanks-display">
                     <ul>
-                        <li> Tank A1 </li>
-                        <li> Tank A2 </li>
-                        <li> Tank A3 </li>
-                        <li> Tank A4 </li>
-                        <li> Tank A5 </li>
-                        <li> Tank B1 </li>
+                        @foreach (string s in ViewBag.ActiveTanks)
+                        {
+                            <li>
+                                @s
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
