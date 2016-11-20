@@ -10,5 +10,6 @@ namespace WebApplication.Models
         public int ID { get; set; }
         public int TankID { get; set; }
         public DateTime time { get; set; }
+        public Sensor[] sensors { get; set; }
     }
 }

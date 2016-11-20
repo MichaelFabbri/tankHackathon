@@ -7,5 +7,8 @@ namespace WebApplication.Models
 {
     public class Sensor
     {
+        public int ID { get; set; }
+        public int SensorTypeID { get; set; }
+        public double ReadingValue { get; set; }
     }
 }
