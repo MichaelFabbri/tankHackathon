@@ -287,6 +287,7 @@ namespace WebApplication.Controllers
                         }
                         ls.Add(new Sensor()
                         {
+                            SensorTypeID = Convert.ToInt32(reader["SensorTypeID"]),
                             SensorName = reader["Name"].ToString(),
                             ReadingValue = Convert.ToDouble(reader["readingValue"])
                         });
