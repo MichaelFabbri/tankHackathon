@@ -37,13 +37,13 @@
     }
  .sidebar {
      position: fixed;
-     width: 26%;
+     width: 16%;
      overflow-y: scroll;
      height: 100%;
      background:#D3CBC4; /* yellow under waterby */
  }
  .content {
-    width: 74%;
+    width: 84%;
     height: auto;
     outline: 1px solid;
     position: absolute;
@@ -85,7 +85,6 @@
 	top:1px;
 }
 
- }
  .scale-to-container {
      max-width:90%;
     max-height:90%;
@@ -129,12 +128,6 @@
 	top:1px;
 }
 
- #active-tanks-toggle {
-
- }
-  #all-tanks-toggle {
- }
-
 </style>
 
 </head>
@@ -144,11 +137,11 @@
         <section class="sidebar">
             <div>
                 <div class="tanks-toggle flex flex-row">
-                    <div id="active-tanks-toggle" class="list-toggle-button scale-to-container-sm active">
-                        <img src="~/Images/active-tanks.png" />
+                    <div id="active-tanks-toggle" class="list-toggle-button active">
+                        <img class="scale-to-container-sm"  src="~/Images/active-tanks.png" />
                     </div>
-                    <div id="all-tanks-toggle" class="list-toggle-button scale-to-container-sm">
-                        <img src="~/Images/all-tanks.png" />
+                    <div id="all-tanks-toggle" class="list-toggle-button">
+                        <img class="scale-to-container-sm" src="~/Images/all-tanks.png" />
                     </div>
                 </div>
                 <div class="tanks-display">
