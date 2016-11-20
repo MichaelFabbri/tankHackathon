@@ -202,6 +202,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\ConcernIndicators\caution-indicator.png" />
+    <Content Include="Images\ConcernIndicators\danger-indicator.png" />
+    <Content Include="Images\ConcernIndicators\good-indicator.png" />
     <Content Include="Images\logo-icon.png" />
     <Content Include="Scripts\bootstrap-fileupload.min.js" />
     <Content Include="Scripts\bootstrap.js" />

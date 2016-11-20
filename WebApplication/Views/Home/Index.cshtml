@@ -2,19 +2,100 @@
     ViewBag.Title = "Tank Monitoring";
 }
 
+<style>
+
+    .status-header-area {
+        height : 250px;
+        width : 100%;
+    }
+    .status-bar-fixed {
+        margin : 0 auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 750px;
+        height: 150px;
+        background-color : aqua;
+    }
+    .history-body-area {
+        margin-top : 50px;
+        width : 100%;
+    }
+
+    .history-display {
+        margin : 0 auto;
+        width : 650px;
+        height : 650px;
+        background-color : gray;
+
+    }
+
+    .history-display-header {
+        position : relative;
+        width : 100%;
+        height : 10%;
+        background-color : midnightblue;
+    }
+
+    .chart-display-area {
+        position : relative;
+        width : 100%;
+        height : 80%;
+    }
+
+    .add-table-bar {
+        position : relative;
+        width : 100%;
+        height : 10%;
+        background-color : papayawhip;
+    }   
+    .labeled-image {
+        height : 100%;
+    }
+
+    .img-label {
+        height : 20%;
+    }
+    .img-display {
+        height : 80%;
+    }
+</style>
+
 <div class="status-header-area">
-    <div class="status-bar-fixed">
-        <div class="status-indicator"></div>
-        <div class="status-bp"></div>
-        <div class="status-salinity"></div>
-        <div class="status-temperature"></div>
-        <div class="status-ph"></div>
+    <div class="status-bar-fixed flex flex-row">
+        <div class="status-indicator">
+            <div class="labeled-image flex flex-column">
+                <h3 class="img-label"> Status </h3>
+                <div class="img-display">
+                    <img src="~/Images/ConcernIndicators/danger-indicator.png" />
+                </div>
+                
+            </div>
+        </div>
+            
+            
+        <div class="status-bp flex-item-scale">
+            <h4> Barometric Pressure </h4>
+        </div>
+        <div class="status-salinity flex-item-scale">
+             <h4> Salinity </h4>
+        </div>
+        <div class="status-temperature flex-item-scale">
+            <h4> Temperature </h4>
+        </div>
+        <div class="status-ph flex-item-scale">
+             <h4> PH Level </h4>
+        </div>
     </div>
 </div>
 <div class="history-body-area">
     <div class="history-display">
         <div class="history-display-header"></div>
+        <div class="chart-display-area"></div>
         <!-- Chart Here -->
+        <div class="add-table-bar"></div>
     </div>
 
 </div>

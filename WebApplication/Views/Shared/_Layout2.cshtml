@@ -9,37 +9,60 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> @ViewBag.Title - Optimizing Tank Management </title>
-    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <style>
-        .sidebar {
+        * {
+            position : relative;
+        }
+
+        .flex {
+        display : flex;
+    }
+
+    .flex-row {
+        flex-direction: row;
+    }
+
+    .flex-column {
+        flex-direction : column;
+    }
+    .flex-item-scale {
+        flex-basis : auto;
+    }
+ .sidebar {
      position: fixed;
-     width: 200px;
-     height: 400px;
-     background: #000;
+     width: 20%;
+     overflow-y: scroll;
+     height: 100%;
+     background: #4E4E4E;
  }
  .content {
-     margin-left: 200px;
-     height: 500px;
-     width: auto;
-     position: relative;
-     background: #f00;
-     overflow: auto;
-     z-index: 1;
+    width: 80%;
+    height: auto;
+    outline: 1px solid;
+    position: absolute;
+    right: 0;
  }
- .info {
-     width: 1440px;
-     height: 300px;
-     position: relative;
-     background: #f55;
+
+ .tanks-display > ul {
+     list-style : none;
  }
+
+ .tanks-display > ul > li {
+     height : 50px;
+ }
+ .scale-to-container {
+     max-width:100%;
+    max-height:100%;
+ }
+
     </style>
 
 </head>
 <body>
     <div class="container body-content">
         <section class="sidebar">
-            <div class="nav nav-pills nav-stacked side-navigation">
+            <div>
                 <div class="tanks-toggle">
                     <div id="active-tanks-toggle"> </div>
                     <div id="all-tanks-toggle"> </div>
@@ -56,7 +79,7 @@
                 </div>
             </div>
         </section>
-        <section class="content">
+        <section class="content flex flex-column">
             <!--sidebar nav end-->
             @RenderBody()
         </section>
