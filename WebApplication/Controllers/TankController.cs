@@ -287,11 +287,12 @@ namespace WebApplication.Controllers
                         }
                         ls.Add(new Sensor()
                         {
+                            SensorTypeID = Convert.ToInt32(reader["SensorTypeID"]),
                             SensorName = reader["Name"].ToString(),
                             ReadingValue = Convert.ToDouble(reader["readingValue"])
                         });
                     } while (reader.Read());
-
+                    curr.sensors = ls.ToArray();
                 }
             }
             catch (Exception ex) { return "Bad: " + ex.Message; }
