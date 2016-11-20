@@ -128,7 +128,7 @@ namespace WebApplication.Controllers
             }
             return "Good";
         }
-        [HttpPost]
+        //[HttpPost]
         //public string AddReading(Readings model, string TankName)
         //{
         //    string command = "DECLARE @tankID int = (SELECT TOP(1) ID FROM Tank WHERE Active = 1 AND Name = '" + TankName + "')";
