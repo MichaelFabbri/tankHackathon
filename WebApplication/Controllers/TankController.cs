@@ -67,9 +67,8 @@ namespace WebApplication.Controllers
         public string StartTank(Tank tank)
         {
             string command = "INSERT INTO Tank (Name, SpeciesID, Active, LifecycleStart, LifecycleEnd) VALUES (";
-            command += tank.ID.ToString() + ",";
-            command += tank.SpeciesID.ToString() + ",";
-            command += tank.Active.ToString() + ",";
+            command += tank.Name + ",";
+            command += tank.SpeciesID.ToString() + ",true,";
             command += tank.LifeCycleStart.ToString() + ",";
             command += tank.LifeCycleEnd.ToString() + ")";
 
@@ -109,7 +108,7 @@ namespace WebApplication.Controllers
         [HttpPost]
         public string AddReading(Readings model, string TankName)
         {
-            string command = "DECLARE @tankID int = SELECT ID FROM Table WHERE Active=true AND Name = " + TankName;
+            string command = "DECLARE @tankID int = SELECT ID FROM Tank WHERE Active = true AND Name = " + TankName;
             command += ";INSERT INTO Reading (TankID, ReadTime) VALUES (@tankID, GETDATE());";
             command += "DECLARE @readingID int = @@IDENTITY";
             foreach (Sensor s in model.sensors)
@@ -166,6 +165,24 @@ namespace WebApplication.Controllers
                 conn.Close();
             }
             return "Good";
+        }
+        public void DoStuff()
+        {
+            string[] tanks = { "A", "B", "C" };
+            foreach (string s in tanks)
+            {
+                for (int i = 1; i < 6; i++)
+                {
+                    Tank t = new Tank()
+                    {
+                        Name = s + i.ToString(),
+                        SpeciesID = 1,
+                        LifeCycleEnd = DateTime.Now.AddDays(30),
+                        LifeCycleStart = DateTime.Now
+                    };
+
+                }
+            }
         }
     }
 }
