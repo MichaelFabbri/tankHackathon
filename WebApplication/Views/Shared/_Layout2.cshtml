@@ -72,7 +72,7 @@
             font-family: Arial;
             font-size: 15px;
             font-weight: bold;
-            padding: 11px 23px;
+            width : 100%;
             text-decoration: none;
             text-shadow: 0px -1px 0px #2b665e;
         }
@@ -87,7 +87,7 @@
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c7c7c', endColorstr='#768d87',GradientType=0);
 	background-color:#6c7c7c;
 }
-.myButton:active {
+.tanks-display > ul > li :active {
 	position:relative;
 	top:1px;
 }
@@ -122,9 +122,9 @@
         <section class="sidebar">
             <div>
                 <div class="tanks-toggle flex flex-row">
-                    <div id="active-tanks-toggle active" class="list-toggle-button">
+                    <div id="active-tanks-toggle active" class="list-toggle-button scale-to-container">
                     </div>
-                    <div id="all-tanks-toggle" class="list-toggle-button">
+                    <div id="all-tanks-toggle" class="list-toggle-button scale-to-container">
 
                     </div>
                 </div>
