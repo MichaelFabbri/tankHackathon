@@ -60,6 +60,9 @@
         width: 80%;
         margin: 15px auto;
     }
+    .chart-toggle-buttons {
+        margin : 0 auto;
+    }
 
     .add-table-bar {
         position : relative;
@@ -98,7 +101,44 @@
         padding : 20px;
         background-color : #F6F6F6;
         border : 1px solid #D3CBC4;
+        vertical-align : middle;
     }
+
+    .chart-canvas {
+        margin-left: auto;
+        margin-right: auto; 
+    }
+
+    .ch-toggle-btn {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf',GradientType=0);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.ch-toggle-btn:hover {
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed',GradientType=0);
+	background-color:#dfdfdf;
+}
+.ch-toggle-btn:active {
+	position:relative;
+	top:1px;
+}
+
+
 </style>
 
 <div class="status-header-area">
@@ -161,13 +201,14 @@
         <div class="history-display-header"></div>
         <div class="chart-display-area">
             <div id="chart" class="chart-container">
-                <canvas id="myChart"></canvas>
+                <canvas class="chart-canvas" id="myChart"></canvas>
             </div>
             <div class="chart-toggle-buttons flex flex-row">
-                <div id="bp-toggle" class="flex-item-scale"> BP </div>
-                <div id="salinity-toggle" class="flex-item-scale"> Salinity </div>
-                <div id="temp-toggle" class="flex-item-scale"> Temperature </div>
-                <div id="ph-toggle" class="flex-item-scale"> PH </div>
+                <div id="bp-toggle" class="ch-toggle-btn flex-item-scale"> BP </div>
+                <div id="temp-toggle" class="ch-toggle-btn flex-item-scale"> Temperature </div>
+                <div id="conduct-toggle" class="ch-toggle-btn flex-item-scale"> Conductivity </div>
+                <div id="color-toggle" class="ch-toggle-btn flex-item-scale"> Colorometer </div>
+                <div id="ph-toggle" class="ch-toggle-btn flex-item-scale"> PH </div>
             </div>
         </div>
         <div class="add-table-bar">
