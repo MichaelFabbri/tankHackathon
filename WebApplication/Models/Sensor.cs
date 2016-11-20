@@ -10,5 +10,6 @@ namespace WebApplication.Models
         public int ID { get; set; }
         public int SensorTypeID { get; set; }
         public double ReadingValue { get; set; }
+        public string SensorName { get; set; }
     }
 }
