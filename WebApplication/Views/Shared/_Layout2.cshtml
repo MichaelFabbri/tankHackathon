@@ -11,11 +11,34 @@
     <title> @ViewBag.Title - Optimizing Tank Management </title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .sidebar {
+     position: fixed;
+     width: 200px;
+     height: 400px;
+     background: #000;
+ }
+ .content {
+     margin-left: 200px;
+     height: 500px;
+     width: auto;
+     position: relative;
+     background: #f00;
+     overflow: auto;
+     z-index: 1;
+ }
+ .info {
+     width: 1440px;
+     height: 300px;
+     position: relative;
+     background: #f55;
+ }
+    </style>
 
 </head>
 <body>
     <div class="container body-content">
-        <section class="fixed-navigation">
+        <section class="sidebar">
             <div class="nav nav-pills nav-stacked side-navigation">
                 <div class="tanks-toggle">
                     <div id="active-tanks-toggle"> </div>
@@ -33,9 +56,10 @@
                 </div>
             </div>
         </section>
-        <section class="main-body"></section>
-        <!--sidebar nav end-->
-        @RenderBody()
+        <section class="content">
+            <!--sidebar nav end-->
+            @RenderBody()
+        </section>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
