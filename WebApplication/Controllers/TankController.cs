@@ -67,10 +67,10 @@ namespace WebApplication.Controllers
         public string StartTank(Tank tank)
         {
             string command = "INSERT INTO Tank (Name, SpeciesID, Active, LifecycleStart, LifecycleEnd) VALUES (";
-            command += tank.Name + ",";
-            command += tank.SpeciesID.ToString() + ",true,";
-            command += tank.LifeCycleStart.ToString() + ",";
-            command += tank.LifeCycleEnd.ToString() + ")";
+            command += "'" + tank.Name + "',";
+            command += tank.SpeciesID.ToString() + ",1,";
+            command += "'" + tank.LifeCycleStart.ToString("yyyy-MM-dd") + "',";
+            command += "'" + tank.LifeCycleEnd.ToString("yyyy-MM-dd") + "')";
 
             SqlConnection conn = new SqlConnection(_static.dbconn);
             SqlCommand cmd = new SqlCommand(command, conn);
@@ -79,7 +79,7 @@ namespace WebApplication.Controllers
                 conn.Open();
                 var reader = cmd.ExecuteNonQuery();
             }
-            catch { return "Bad"; }
+            catch(Exception ex) { return "Bad: " + ex.Message; }
             finally
             {
                 conn.Close();
@@ -89,7 +89,7 @@ namespace WebApplication.Controllers
         [HttpPost]
         public string EndTank(int ID)
         {
-            string command = "UPDATE Tank SET Active=False WHERE ID=" + ID.ToString();
+            string command = "UPDATE Tank SET Active=0 WHERE ID=" + ID.ToString();
 
             SqlConnection conn = new SqlConnection(_static.dbconn);
             SqlCommand cmd = new SqlCommand(command, conn);
@@ -108,9 +108,9 @@ namespace WebApplication.Controllers
         [HttpPost]
         public string AddReading(Readings model, string TankName)
         {
-            string command = "DECLARE @tankID int = SELECT ID FROM Tank WHERE Active = true AND Name = " + TankName;
+            string command = "DECLARE @tankID int = (SELECT TOP(1) ID FROM Tank WHERE Active = 1 AND Name = '" + TankName + "')";
             command += ";INSERT INTO Reading (TankID, ReadTime) VALUES (@tankID, GETDATE());";
-            command += "DECLARE @readingID int = @@IDENTITY";
+            command += "DECLARE @readingID int = @@IDENTITY;";
             foreach (Sensor s in model.sensors)
             {
                 command += "INSERT INTO Sensor (SensorTypeID, ReadingValue, readingID) VALUES (";
@@ -125,7 +125,7 @@ namespace WebApplication.Controllers
                 conn.Open();
                 var reader = cmd.ExecuteNonQuery();
             }
-            catch { return "Bad"; }
+            catch (Exception ex) { return "Bad: " + ex.Message; }
             finally
             {
                 conn.Close();
@@ -143,8 +143,8 @@ namespace WebApplication.Controllers
             }
             command += ") VALUES (";
             command += model.TankID.ToString() + ",";
-            command += model.Title + ",";
-            command += model.Content + ",";
+            command += "'" + model.Title + "',";
+            command += "'" + model.Content + "',";
             if (model.Picture != null)
             {
                 command += "0x" + BitConverter.ToString(model.Picture).Replace("-", "") + ",";
@@ -166,23 +166,37 @@ namespace WebApplication.Controllers
             }
             return "Good";
         }
-        public void DoStuff()
+        public string DoStuff()
         {
-            string[] tanks = { "A", "B", "C" };
-            foreach (string s in tanks)
-            {
-                for (int i = 1; i < 6; i++)
-                {
-                    Tank t = new Tank()
-                    {
-                        Name = s + i.ToString(),
-                        SpeciesID = 1,
-                        LifeCycleEnd = DateTime.Now.AddDays(30),
-                        LifeCycleStart = DateTime.Now
-                    };
+            EndTank(20);
+            //string output = "";
+            //string[] tanks = { "A", "B", "C" };
+            //foreach (string s in tanks)
+            //{
+            //    for (int i = 1; i < 6; i++)
+            //    {
+            //        Tank t = new Tank()
+            //        {
+            //            Name = s + i.ToString(),
+            //            SpeciesID = 1,
+            //            LifeCycleEnd = DateTime.Now.AddDays(30),
+            //            LifeCycleStart = DateTime.Now
+            //        };
+            //        output += StartTank(t) + "<br />";
+            //    }
+            //}
+            //return output;
+            return TestAddReading();
+        }
 
-                }
-            }
+        public string TestAddReading()
+        {
+            Readings r = new Readings();
+            Sensor s = new Sensor();
+            s.ReadingValue = 1.0;
+            s.SensorTypeID = 1;
+            r.sensors = new Sensor[] { s };
+            return JsonConvert.SerializeObject(r);
         }
     }
 }
