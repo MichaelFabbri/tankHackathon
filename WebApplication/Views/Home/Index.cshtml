@@ -254,6 +254,7 @@
                 var sensorType = sensor.SensorTypeID;
                 var readingData = sensor.ReadingValue;
                 if (sensorType == 1) {
+                    console.log(sensorType.toString());
                     chartData[0].push(readingData);
                 } else if (sensorType == 2) {
                     chartData[1].push(readingData);
