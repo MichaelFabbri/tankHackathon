@@ -3,6 +3,12 @@
 }
 <style>
 
+    .status-indicator {
+        position : fixed;
+        top : 15px;
+        right : 15px;
+        max-width: 200px;
+    }
     .status-header-area {
         height : 70px;
         width : 100%;
@@ -153,12 +159,12 @@
 </style>
 
 <div class="status-header-area">
-    <div class="status-bar-fixed flex flex-row">
-        <div class="status-indicator">
-            <div class="labeled-image flex flex-column">
-                 <img class="sm-img" src="~/Images/ConcernIndicators/danger-indicator.png" />
-            </div>
+    <div class="status-indicator">
+        <div class="labeled-image flex flex-column">
+            <img class="sm-img" src="~/Images/ConcernIndicators/danger-indicator.png" />
         </div>
+    </div>
+    <div class="status-bar-fixed flex flex-row">
         <div class="status-info status-bp flex-item-scale">
             <h4> Barometric Pressure </h4>
             
