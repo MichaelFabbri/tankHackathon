@@ -37,7 +37,7 @@ namespace WebApplication
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/commonjs").Include(
-                    "~/ Scripts / common.scripts.js"
+                    "~/Scripts/common.scripts.js"
                 ));
         }
     }
