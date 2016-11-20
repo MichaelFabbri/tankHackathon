@@ -30,9 +30,12 @@
         flex: 1 100px;
         justify-content: space-around;
     }
+    .hide-scrollbar {
+        overflow: hidden;
+    }
  .sidebar {
      position: fixed;
-     width: 10%;
+     width: 15%;
      overflow-y: scroll;
      height: 100%;
      background:#D3CBC4; /* yellow under waterby */
@@ -72,7 +75,7 @@
             font-family: Arial;
             font-size: 15px;
             font-weight: bold;
-            padding: 11px 23px;
+            width : 100%;
             text-decoration: none;
             text-shadow: 0px -1px 0px #2b665e;
         }
@@ -87,31 +90,70 @@
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c7c7c', endColorstr='#768d87',GradientType=0);
 	background-color:#6c7c7c;
 }
-.myButton:active {
+.tanks-display > ul > li :active {
 	position:relative;
 	top:1px;
 }
 
  }
  .scale-to-container {
-     max-width:100%;
-    max-height:100%;
+     max-width:90%;
+    max-height:90%;
+ }
+
+ .scale-to-container-sm {
+     max-width : 70%;
+     max-height : 70%;
  }
  .tanks-toggle {
-     left : 0;
-     top : 0;
-     position : absolute;
+     position : relative;
      width : 100%;
      height : 150px;
+     margin-bottom : 20px;
  }
  .list-toggle-button {
      width : 50%;
+	-moz-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #637aad), color-stop(1, #5972a7));
+	background:-moz-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	background:-webkit-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	background:-o-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	background:-ms-linear-gradient(top, #637aad 5%, #5972a7 100%);
+	background:linear-gradient(to bottom, #637aad 5%, #5972a7 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#637aad', endColorstr='#5972a7',GradientType=0);
+	background-color:#637aad;
+	border:1px solid #314179;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	font-weight:bold;
+	padding:6px 12px;
+	text-decoration:none;
+}
+.list-toggle-button:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5972a7), color-stop(1, #637aad));
+	background:-moz-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	background:-webkit-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	background:-o-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	background:-ms-linear-gradient(top, #5972a7 5%, #637aad 100%);
+	background:linear-gradient(to bottom, #5972a7 5%, #637aad 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5972a7', endColorstr='#637aad',GradientType=0);
+	background-color:#5972a7;
+}
+.list-toggle-button:active {
+	position:relative;
+	top:1px;
+}
+
  }
  #active-tanks-toggle {
-     background: url(../../Images/active-tanks.png) no-repeat center center;
+
  }
   #all-tanks-toggle {
-     background: url(../../Images/all-tanks.png) no-repeat center center;
  }
 
     </style>
@@ -119,13 +161,15 @@
 </head>
 <body>
     <div class="container body-content">
+        <div class="hide-scrollbar">
         <section class="sidebar">
             <div>
                 <div class="tanks-toggle flex flex-row">
-                    <div id="active-tanks-toggle active" class="list-toggle-button">
+                    <div id="active-tanks-toggle" class="list-toggle-button scale-to-container-sm active">
+                        <img src="~/Images/active-tanks.png" />
                     </div>
-                    <div id="all-tanks-toggle" class="list-toggle-button">
-
+                    <div id="all-tanks-toggle" class="list-toggle-button scale-to-container-sm">
+                        <img src="~/Images/all-tanks.png" />
                     </div>
                 </div>
                 <div class="tanks-display">
@@ -140,6 +184,7 @@
                 </div>
             </div>
         </section>
+        </div>
         <section class="content flex flex-column">
             <!--sidebar nav end-->
             @RenderBody()
@@ -149,11 +194,6 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/sidebar")
-    @Scripts.Render("~/bundles/additionaljquery")
     @RenderSection("scripts", required: false)
 </body>
 </html>
