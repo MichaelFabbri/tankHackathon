@@ -1,0 +1,67 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_Layout2</title>
+
+</head>
+<body>
+    
+    <section>
+        <!--sidebar nav start-->
+        <ul class="nav nav-pills nav-stacked side-navigation">
+
+            <li>
+
+                <h3 class="navigation-title">Navigation</h3>
+
+            </li>
+
+            <li class="active"><a href="index.html"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+
+            <li class="menu-list">
+
+                <a href=""><i class="fa fa-laptop"></i>  <span>Layouts</span></a>
+
+                <ul class="child-list">
+
+                    <li><a href="boxed-layout.html"> Boxed Page</a></li>
+
+                    <li><a href="collapsed-menu.html"> Sidebar Collapsed</a></li>
+
+                    <li><a href="blank-page.html"> Blank page</a></li>
+
+                    <li><a href="different-theme-layouts.html"> Different Theme Layouts</a></li>
+
+                </ul>
+
+            </li>
+
+        </ul>
+    </section>
+
+
+    <!--sidebar nav end-->
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/commonjs")
+    @Scripts.Render("~/bundles/sidebar")
+    @Scripts.Render("~/bundles/additionaljquery")
+    @Scripts.Render()
+    @RenderSection("scripts", required: false)
+</body>
+</html>
