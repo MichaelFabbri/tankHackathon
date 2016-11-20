@@ -238,10 +238,12 @@
     var chartData = [ [], [], [], [], [], [] ];
     var response = $.getJSON("@Url.Action("ActiveBranchAll","Tank",new {ID = ViewBag.ID }, Request.Url.Scheme)", function () {
         var jsonResponse = response.JSONresponse;
+        console.log(jsonResponse);
         var reading = null;
         jsonResponse.forEach(function (obj) {
             reading = obj.sensors;
             reading.forEach(function (sensor) {
+                console.log(sensor);
                 var sensorType = sensor.SensorTypeID;
                 var readingData = sensor.ReadingValue;
                 if (sensorType == 1) {
