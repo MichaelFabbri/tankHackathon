@@ -239,7 +239,7 @@
     var chartData = [ [], [], [], [], [], [] ];
     var response = $.getJSON("@Url.Action("ActiveBranchAll","Tank",new {ID = ViewBag.ID }, Request.Url.Scheme)", function () {
         console.log(ID);
-        var jsonResponse = response.JSONresponse;
+        var jsonResponse = response.responseJSON;
         console.log(jsonResponse);
         var reading = null;
         jsonResponse.forEach(function (obj) {
