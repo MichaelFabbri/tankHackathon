@@ -56,6 +56,18 @@
      max-width:100%;
     max-height:100%;
  }
+ .tanks-toggle {
+     width : 100%;
+ }
+ .list-toggle-button {
+     width : 50%;
+ }
+ #active-tanks-toggle {
+     background: url(../../Images/active-tanks.png) no - repeat center center;
+ }
+  #all-tanks-toggle {
+     background: url(../../Images/all-tanks.png) no - repeat center center;
+ }
 
     </style>
 
@@ -64,9 +76,12 @@
     <div class="container body-content">
         <section class="sidebar">
             <div>
-                <div class="tanks-toggle">
-                    <div id="active-tanks-toggle"> </div>
-                    <div id="all-tanks-toggle"> </div>
+                <div class="tanks-toggle flex flex-row">
+                    <div id="active-tanks-toggle active" class="list-toggle-button">
+                    </div>
+                    <div id="all-tanks-toggle" class="list-toggle-button">
+
+                    </div>
                 </div>
                 <div class="tanks-display">
                     <ul>
