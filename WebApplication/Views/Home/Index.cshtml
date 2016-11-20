@@ -236,7 +236,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
 <script>
     var chartData = [ [], [], [], [], [], [] ];
-    var Response = $getJSON("@Url.Action("ActiveBranchAll","Tank",new {ID = ViewBag.ID }, Request.Url.Scheme)", function () {
+    var Response = $.getJSON("@Url.Action("ActiveBranchAll","Tank",new {ID = ViewBag.ID }, Request.Url.Scheme)", function () {
         var jsonResponse = response.JSONresponse;
         var reading = null;
         jsonResponse.forEach(function (obj) {
