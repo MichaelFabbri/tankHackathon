@@ -231,6 +231,60 @@ namespace WebApplication.Controllers
             return "";// TestAddReading();
         }
 
+        public string ActiveBranchAll(int ID)
+        {
+            List<Readings> output = new List<Readings>();
+            string command = "SELECT * FROM Reading, Sensor, SensorType WHERE Reading.ID = Sensor.ReadingID AND Sensor.SensorTypeID = SensorType.ID AND Reading.TankID=" + ID.ToString();
+            
+            SqlConnection conn = new SqlConnection(_static.dbconn);
+            SqlCommand cmd = new SqlCommand(command, conn);
+            try
+            {
+                int PrevReadID = 0;
+                Readings curr;
+                List<Sensor> ls = new List<Sensor>();
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    PrevReadID = Convert.ToInt32(reader["ReadingID"]);
+                    curr = new Readings()
+                    {
+                        TankID = Convert.ToInt32(reader["TankID"]),
+                        time = Convert.ToDateTime(reader["ReadTime"])
+                    };
+                    output.Add(curr);
+                    do
+                    {
+                        if (Convert.ToInt32(reader["ReadingID"]) != PrevReadID)
+                        {
+                            PrevReadID = Convert.ToInt32(reader["ReadingID"]);
+                            curr.sensors = ls.ToArray();
+                            ls = new List<Sensor>();
+                            curr = new Readings()
+                            {
+                                TankID = Convert.ToInt32(reader["TankID"]),
+                                time = Convert.ToDateTime(reader["ReadTime"])
+                            };
+                            output.Add(curr);
+                        }
+                        ls.Add(new Sensor()
+                        {
+                            SensorName = reader["Name"].ToString(),
+                            ReadingValue = Convert.ToDouble(reader["readingValue"])
+                        });
+                    } while (reader.Read());
+
+                }
+            }
+            catch (Exception ex) { return "Bad: " + ex.Message; }
+            finally
+            {
+                conn.Close();
+            }
+            return JsonConvert.SerializeObject(output);
+        }
+
         public string TestAddReading()
         {
             Readings r = new Readings();
