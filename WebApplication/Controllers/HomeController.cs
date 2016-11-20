@@ -11,7 +11,7 @@ namespace WebApplication.Controllers
 {
     public class HomeController : Controller
     {
-        protected override void Execute(RequestContext requestContext)
+        protected override IAsyncResult BeginExecute(RequestContext requestContext, AsyncCallback callback, object state)
         {
             TankController ctr = new TankController();
             Tank[] tanks = JsonConvert.DeserializeObject<Tank[]>(ctr.GetActive());
@@ -21,6 +21,11 @@ namespace WebApplication.Controllers
                 ActiveTanks.Add(t.Name);
             }
             ViewBag.ActiveTanks = ActiveTanks.ToArray();
+            return base.BeginExecute(requestContext, callback, state);
+        }
+        protected override void Execute(RequestContext requestContext)
+        {
+            
             base.Execute(requestContext);
         }
         public ActionResult Index()

@@ -23,6 +23,7 @@ namespace WebApplication.Controllers
             {
                 conn.Open();
                 var reader = cmd.ExecuteReader();
+                reader.Read();
                 output.ID = Convert.ToInt32(reader["ID"]);
                 output.TankID = Convert.ToInt32(reader["TankID"]);
                 output.time = Convert.ToDateTime(reader["ReadTime"]);
@@ -41,22 +42,27 @@ namespace WebApplication.Controllers
         public string GetActive()
         {
             List<Tank> output = new List<Tank>();
-            string command = "SELECT * FROM Tank WHERE Active = true ORDER BY Name";
+            string command = "SELECT * FROM Tank WHERE Active = 1 ORDER BY Name";
             SqlConnection conn = new SqlConnection(_static.dbconn);
             SqlCommand cmd = new SqlCommand(command, conn);
             try
             {
                 conn.Open();
                 var reader = cmd.ExecuteReader();
-                Tank t = new Tank();
-                t.ID = Convert.ToInt32(reader["ID"]);
-                t.Name = reader["TankID"].ToString();
-                t.SpeciesID = Convert.ToInt32(reader["ReadTime"]);
-                t.Active = Convert.ToBoolean(reader["Active"]);
-                t.LifeCycleStart = Convert.ToDateTime(reader["LifeCycleStart"]);
-                t.LifeCycleEnd = Convert.ToDateTime(reader["LifeCycleEnd"]);
+                reader.Read();
+                do
+                {
+                    Tank t = new Tank();
+                    t.ID = Convert.ToInt32(reader["ID"]);
+                    t.Name = reader["Name"].ToString();
+                    t.SpeciesID = Convert.ToInt32(reader["SpeciesID"]);
+                    t.Active = Convert.ToBoolean(reader["Active"]);
+                    t.LifeCycleStart = Convert.ToDateTime(reader["LifeCycleStart"]);
+                    t.LifeCycleEnd = Convert.ToDateTime(reader["LifeCycleEnd"]);
+                    output.Add(t);
+                } while (reader.Read());
             }
-            catch { }
+            catch (Exception ex) { return ex.Message; }
             finally
             {
                 conn.Close();
