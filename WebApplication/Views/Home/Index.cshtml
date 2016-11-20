@@ -1,9 +1,15 @@
 ﻿@{
     ViewBag.Title = "Tank Monitoring";
 }
-
 <style>
 
+    .status-indicator {
+        position : fixed;
+        top : 15px;
+        right : 15px;
+        max-width: 200px;
+        z-index: 9999;
+    }
     .status-header-area {
         height : 70px;
         width : 100%;
@@ -154,12 +160,12 @@
 </style>
 
 <div class="status-header-area">
-    <div class="status-bar-fixed flex flex-row">
-        <div class="status-indicator">
-            <div class="labeled-image flex flex-column">
-                 <img class="sm-img" src="~/Images/ConcernIndicators/danger-indicator.png" />
-            </div>
+    <div class="status-indicator">
+        <div class="labeled-image flex flex-column">
+            <img class="sm-img" src="~/Images/ConcernIndicators/danger-indicator.png" />
         </div>
+    </div>
+    <div class="status-bar-fixed flex flex-row">
         <div class="status-info status-bp flex-item-scale">
             <h4> Barometric Pressure </h4>
             
@@ -222,6 +228,9 @@
                         <div id="color-toggle" class="ch-toggle-btn flex-item-scale"> Colorometer </div>
                         <div id="ph-toggle" class="ch-toggle-btn flex-item-scale"> PH </div>
                     </div>
+                    <div class="chart-toggle-buttons flex flex-row">
+                        <div id="display-all-btn" class="ch-toggle-btn flex-item-scale"> Display All </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -233,19 +242,61 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
 <script>
+    var chartData = [ [], [], [], [], [], [] ];
+    var response = $.getJSON('@Url.Action("ActiveBranchAll","Tank",new {ID = ViewBag.ID }, Request.Url.Scheme)', function () {
+        var jsonResponse = response.responseJSON;
+        console.log(jsonResponse);
+        var reading = null;
+        jsonResponse.forEach(function (obj) {
+            reading = obj.sensors;
+            reading.forEach(function (sensor) {
+                console.log(sensor);
+                var sensorType = sensor.SensorTypeID;
+                var readingData = sensor.ReadingValue;
+                if (sensorType == 1) {
+                    console.log(sensorType.toString());
+                    chartData[0].push(readingData);
+                } else if (sensorType == 2) {
+                    chartData[1].push(readingData);
+                } else if (sensorType == 3) {
+                    chartData[2].push(readingData);
+                } else if (sensorType == 4) {
+                    chartData[3].push(readingData);
+                } else if (sensorType == 5) {
+                    chartData[4].push(readingData);
+                } else {
+
+                };
+            });
+        });
+    });
+
+    // [0.1, 0.3, 0.62, .54, 0.78, 0.21, 0.7]
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+            labels: ["Jan", "Feb", "Mar", "Apr", "May","Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             datasets: [{
-                label: 'apples',
-                data: [12, 19, 3, 17, 6, 3, 7],
+                label: 'BP',
+                data: chartData[0],
                 backgroundColor: "rgba(153,255,51,0.4)"
             }, {
-                label: 'oranges',
-                data: [2, 29, 5, 5, 2, 3, 10],
-                backgroundColor: "rgba(255,153,0,0.4)"
+                label: 'Temperature',
+                data: chartData[1],
+                backgroundColor: "rgba(213,121,0,0.4)"
+            }, {
+                label: 'Conductivity',
+                data: chartData[2],
+                backgroundColor: "rgba(155,73,0,0.4)"
+            }, {
+                label: 'Colorimeter',
+                data: chartData[3],
+                backgroundColor: "rgba(75,64,0,0.4)"
+            }, {
+                label: 'PH',
+                data: chartData[4],
+                backgroundColor: "rgba(182,164,0,0.4)"
             }]
         }
     });

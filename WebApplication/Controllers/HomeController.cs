@@ -33,6 +33,7 @@ namespace WebApplication.Controllers
         }
         public ActionResult Index(int? ID)
         {
+            ViewBag.ID = ID ?? 0;
             ViewBag.RecentReading = null;
             if (ID != null)
             {

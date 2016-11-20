@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> @ViewBag.Title - Optimizing Tank Management </title>
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
     <style>
         *,
         *:after,
@@ -121,10 +122,10 @@
                 </div>
                 <div class="tanks-display">
                     <ul>
-                        @foreach (string s in ViewBag.ActiveTanks)
+                        @for (int i=0; i < ViewBag.ActiveTanks.Length; i++)
                         {
                             <li>
-                                @s
+                                <a href="~/Home/Index/@ViewBag.ActiveTankIds[i].ToString()"> @ViewBag.ActiveTank </a>
                             </li>
                         }
                     </ul>
@@ -141,6 +142,7 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
+    
     @RenderSection("scripts", required: false)
 </body>
 </html>
