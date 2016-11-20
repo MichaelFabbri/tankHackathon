@@ -112,8 +112,36 @@ namespace WebApplication.Controllers
             return "Good";
         }
         [HttpPost]
-        public string AddReading(Readings model, string TankName)
+        //public string AddReading(Readings model, string TankName)
+        //{
+        //    string command = "DECLARE @tankID int = (SELECT TOP(1) ID FROM Tank WHERE Active = 1 AND Name = '" + TankName + "')";
+        //    command += ";INSERT INTO Reading (TankID, ReadTime) VALUES (@tankID, GETDATE());";
+        //    command += "DECLARE @readingID int = @@IDENTITY;";
+        //    foreach (Sensor s in model.sensors)
+        //    {
+        //        command += "INSERT INTO Sensor (SensorTypeID, ReadingValue, readingID) VALUES (";
+        //        command += s.SensorTypeID.ToString() + ",";
+        //        command += s.ReadingValue.ToString() + ",@readingID);";
+        //    }
+
+        //    SqlConnection conn = new SqlConnection(_static.dbconn);
+        //    SqlCommand cmd = new SqlCommand(command, conn);
+        //    try
+        //    {
+        //        conn.Open();
+        //        var reader = cmd.ExecuteNonQuery();
+        //    }
+        //    catch (Exception ex) { return "Bad: " + ex.Message; }
+        //    finally
+        //    {
+        //        conn.Close();
+        //    }
+        //    return "Good";
+        //}
+        public string AddReading(string json, string TankName)
         {
+            string decoded = HttpUtility.UrlDecode(json);
+            Readings model = JsonConvert.DeserializeObject<Readings>(decoded);
             string command = "DECLARE @tankID int = (SELECT TOP(1) ID FROM Tank WHERE Active = 1 AND Name = '" + TankName + "')";
             command += ";INSERT INTO Reading (TankID, ReadTime) VALUES (@tankID, GETDATE());";
             command += "DECLARE @readingID int = @@IDENTITY;";
@@ -172,6 +200,11 @@ namespace WebApplication.Controllers
             }
             return "Good";
         }
+
+        public string ActiveTankHistory()
+        {
+            return "";
+        }
         public string DoStuff()
         {
             EndTank(20);
@@ -192,7 +225,10 @@ namespace WebApplication.Controllers
             //    }
             //}
             //return output;
-            return TestAddReading();
+            string x = "%7B%22TankName%22%3A%22A1%22%2C+%22model%22%3A%7B%22sensors%22%3A%5B%7B%22SensorTypeID%22%3A1%2C%22ReadingValue%22%3A1.0%7D%2C%7B%22SensorTypeID%22%3A2%2C%22ReadingValue%22%3A1.0%7D%2C%7B%22SensorTypeID%22%3A3%2C%22ReadingValue%22%3A1.0%7D%2C%7B%22SensorTypeID%22%3A4%2C%22ReadingValue%22%3A1.0%7D%2C%7B%22SensorTypeID%22%3A5%2C%22ReadingValue%22%3A1.0%7D%5D%7D";
+            string z = HttpUtility.UrlDecode(x);
+            string a = z;
+            return "";// TestAddReading();
         }
 
         public string TestAddReading()
