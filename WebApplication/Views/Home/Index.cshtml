@@ -2,19 +2,65 @@
     ViewBag.Title = "Tank Monitoring";
 }
 
+<style>
+    .status-header-area {
+        height : 20%;
+        width : 100%;
+    }
+    .status-bar-fixed {
+        margin : 0 auto;
+        position: fixed;
+        width: 750px;
+        height: 350px;
+        background-color : aqua;
+    }
+    .history-body-area {
+        height : 80%
+    }
+
+    .history-display {
+        margin : 0 auto;
+        width : 850px;
+        height : 650px;
+        background-color : gray;
+
+    }
+
+    .history-display-header {
+        width : 100%;
+        height : 10%;
+        background-color : midnightblue;
+    }
+
+    .chart-display-area {
+        width : 100%;
+        height : 80%;
+    }
+
+    .add-table-bar {
+        width : 10%;
+        height : 10%;
+        background-color : papayawhip;
+    }
+
+    
+</style>
+
 <div class="status-header-area">
     <div class="status-bar-fixed">
-        <div class="status-indicator"></div>
-        <div class="status-bp"></div>
-        <div class="status-salinity"></div>
-        <div class="status-temperature"></div>
-        <div class="status-ph"></div>
+        <div class="status-indicator">  </div>
+        <div class="status-bp">  </div>
+        <div class="status-salinity">  </div>
+        <div class="status-temperature">  </div>
+        <div class="status-ph">  </div>
     </div>
 </div>
 <div class="history-body-area">
     <div class="history-display">
         <div class="history-display-header"></div>
+        <div class="chart-display-area"></div>
         <!-- Chart Here -->
+        <div class="add-table-bar"></div>
     </div>
 
 </div>

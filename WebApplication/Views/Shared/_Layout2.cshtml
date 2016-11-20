@@ -16,7 +16,7 @@
      position: fixed;
      width: 200px;
      height: 400px;
-     background: #000;
+     background: #4E4E4E;
  }
  .content {
      margin-left: 200px;
@@ -33,13 +33,27 @@
      position: relative;
      background: #f55;
  }
+
+ .tanks-display > ul {
+     list-style : none;
+ }
+
+ @@media (min-width:600px) {
+   .sidebar {
+     width: 250px;
+   }
+   .content {
+     display : inline-block;
+     margin-left: 250px;
+   }
+ }
     </style>
 
 </head>
 <body>
     <div class="container body-content">
         <section class="sidebar">
-            <div class="nav nav-pills nav-stacked side-navigation">
+            <div>
                 <div class="tanks-toggle">
                     <div id="active-tanks-toggle"> </div>
                     <div id="all-tanks-toggle"> </div>
