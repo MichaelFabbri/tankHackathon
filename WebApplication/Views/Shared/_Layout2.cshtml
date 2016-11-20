@@ -94,39 +94,14 @@
      max-width : 70%;
      max-height : 70%;
  }
- .tanks-toggle {
-     position : relative;
-     width : 100%;
-     height : 150px;
-     margin-bottom : 20px;
- }
- .list-toggle-button {
-     width : 50%;
-	-moz-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
-	box-shadow:inset 0px 1px 0px 0px #7a8eb9;
-	background:linear-gradient(to bottom, #637aad 5%, #5972a7 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#637aad', endColorstr='#5972a7',GradientType=0);
-	background-color:#637aad;
-	border:1px solid #314179;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:13px;
-	font-weight:bold;
-	padding:6px 12px;
-	text-decoration:none;
-}
-.list-toggle-button:hover {
-	background:linear-gradient(to bottom, #5972a7 5%, #637aad 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5972a7', endColorstr='#637aad',GradientType=0);
-	background-color:#5972a7;
-}
-.list-toggle-button:active {
-	position:relative;
-	top:1px;
-}
+        .tanks-toggle {
+            position: relative;
+            width: 100%;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+
+        
 
 </style>
 
@@ -137,10 +112,10 @@
         <section class="sidebar">
             <div>
                 <div class="tanks-toggle flex flex-row">
-                    <div id="active-tanks-toggle" class="list-toggle-button active">
+                    <div id="active-tanks-toggle" class="flex-item-scale list-toggle-button active">
                         <img class="scale-to-container-sm"  src="~/Images/active-tanks.png" />
                     </div>
-                    <div id="all-tanks-toggle" class="list-toggle-button">
+                    <div id="all-tanks-toggle" class="flex-item-scale list-toggle-button">
                         <img class="scale-to-container-sm" src="~/Images/all-tanks.png" />
                     </div>
                 </div>

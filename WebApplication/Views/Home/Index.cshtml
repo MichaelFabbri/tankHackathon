@@ -98,7 +98,6 @@
         text-align : center;
     }
     .chart-container {
-        margin : 0 auto 0 auto;
         padding : 20px;
         background-color : #F6F6F6;
         border : 1px solid #D3CBC4;
@@ -111,19 +110,17 @@
     }
 
     .ch-toggle-btn {
-	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
 	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf',GradientType=0);
 	background-color:#ededed;
-	border-radius:6px;
+	border-radius:3px;
 	border:1px solid #dcdcdc;
 	display:inline-block;
 	cursor:pointer;
 	color:#777777;
 	font-family:Arial;
-	font-size:15px;
+	font-size:0.8em;
 	font-weight:bold;
 	padding:6px 24px;
 	text-decoration:none;
@@ -141,6 +138,13 @@
 .button-container {
     padding : 10px;
 }
+.sm-img {
+    display: block;
+  max-width:230px;
+  max-height:95px;
+  width: auto;
+  height: auto;
+}
 
 
 </style>
@@ -149,7 +153,7 @@
     <div class="status-bar-fixed flex flex-row">
         <div class="status-indicator">
             <div class="labeled-image flex flex-column">
-                 <img class="scale-to-container" src="~/Images/ConcernIndicators/danger-indicator.png" />
+                 <img class="sm-img" src="~/Images/ConcernIndicators/danger-indicator.png" />
             </div>
         </div>
         <div class="status-info status-bp flex-item-scale">
