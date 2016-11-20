@@ -33,26 +33,17 @@
         justify-content: space-around;
     }
     .hide-scrollbar {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0; /* Not sure why this is here */
-        z-index: 3;
-        max-width: 24em;
-        max-height: none;  
         overflow: hidden;
-        height:100%; /* Needs to be given a height and width as far as I know */
-        width:250px; /* They can be whatever dimensions you'd like, 'course */
     }
  .sidebar {
-  max-width: 100%;
-  max-height: 100%; /* Prevents it from auto sizing to its content */
-  position:absolute;
-  overflow-y: scroll; /* Makes sure that there is a scrollbar */
+     position: fixed;
+     width: 20%;
+     overflow-y: scroll;
+     height: 100%;
      background:#D3CBC4; /* yellow under waterby */
  }
  .content {
-    width: auto;
+    width: 80%;
     height: auto;
     outline: 1px solid;
     position: absolute;
@@ -178,11 +169,11 @@
         <section class="sidebar">
             <div>
                 <div class="tanks-toggle flex flex-row">
-                    <div id="active-tanks-toggle" class="list-toggle-button active">
-                        <img class="scale-to-container-sm" src="~/Images/active-tanks.png" />
+                    <div id="active-tanks-toggle" class="list-toggle-button scale-to-container-sm active">
+                        <img src="~/Images/active-tanks.png" />
                     </div>
-                    <div id="all-tanks-toggle" class="list-toggle-button">
-                        <img class="scale-to-container-sm" src="~/Images/all-tanks.png" />
+                    <div id="all-tanks-toggle" class="list-toggle-button scale-to-container-sm">
+                        <img src="~/Images/all-tanks.png" />
                     </div>
                 </div>
                 <div class="tanks-display">
