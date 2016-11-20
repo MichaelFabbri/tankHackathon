@@ -35,6 +35,7 @@
     }
 
     .history-body-area {
+        margin-top : 100px;
         border-top-left-radius : 15px;
         border-top-right-radius : 15px;
     }
@@ -85,11 +86,13 @@
         text-align : center;
     }
     .status-info {
+        padding : 10px;
         background-color : #F6F6F6;
         -moz-box-shadow:    inset 0 0 10px #000000;
         -webkit-box-shadow: inset 0 0 10px #000000;
         box-shadow:         inset 0 0 10px #000000;
         border-radius : 4px;
+        text-align : center;
     }
 </style>
 
@@ -173,7 +176,7 @@
 
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
 <script>
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
