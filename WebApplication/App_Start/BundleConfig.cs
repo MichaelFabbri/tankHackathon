@@ -21,11 +21,24 @@ namespace WebApplication
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                      "~/Scripts/bootstrap-fileupload.min.js",
                       "~/Scripts/respond.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/additionaljquery").Include(
+                      "~/Scripts/jquery.nicescroll.js",
+                      "~/Scripts/jquery.countTo.js"
+                ));
+            bundles.Add(new ScriptBundle("~/bundles/sidebar").Include(
+                    "~/Scripts/slidebars.min.js"
+                ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/commonjs").Include(
+                    "~/ Scripts / common.scripts.js"
+                ));
         }
     }
 }
