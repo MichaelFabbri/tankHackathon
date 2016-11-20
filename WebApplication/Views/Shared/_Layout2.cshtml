@@ -7,26 +7,28 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>_Layout2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> @ViewBag.Title - Optimizing Tank Management </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
     <div class="container body-content">
         <section class="fixed-navigation">
-            <div class="side-nav">
+            <div class="nav nav-pills nav-stacked side-navigation">
                 <div class="tanks-toggle">
                     <div id="active-tanks-toggle"> </div>
                     <div id="all-tanks-toggle"> </div>
                 </div>
                 <div class="tanks-display">
                     <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li> Tank A1 </li>
+                        <li> Tank A2 </li>
+                        <li> Tank A3 </li>
+                        <li> Tank A4 </li>
+                        <li> Tank A5 </li>
+                        <li> Tank B1 </li>
                     </ul>
                 </div>
             </div>
@@ -42,10 +44,8 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    <!-- @Scripts.Render("~/bundles/commonjs") -->
     @Scripts.Render("~/bundles/sidebar")
     @Scripts.Render("~/bundles/additionaljquery")
-    @Scripts.Render()
     @RenderSection("scripts", required: false)
 </body>
 </html>
