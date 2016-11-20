@@ -302,6 +302,18 @@ namespace WebApplication.Controllers
             return JsonConvert.SerializeObject(output);
         }
 
+        public string ActiveBranchType(int ID, int typeID)
+        {
+            string all = ActiveBranchAll(ID);
+            List<Readings> readings = JsonConvert.DeserializeObject<List<Readings>>(all);
+            List<Readings> output = new List<Readings>();
+            foreach (Readings read in readings)
+            {
+                read.sensors = new Sensor[1] { read.sensors.FirstOrDefault(x => x.SensorTypeID == typeID) };
+            }
+            return JsonConvert.SerializeObject(readings);
+        }
+
         public string TestAddReading()
         {
             Readings r = new Readings();
