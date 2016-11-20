@@ -17,6 +17,7 @@ namespace WebApplication.Controllers
         {
             Readings output = new Readings();
             string command = "SELECT TOP(1) * FROM Reading WHERE tankID = " + ID.ToString() + " ORDER BY ReadTime DESC";
+            string command2 = "SELECT * FROM Sensor, SensorType WHERE Sensor.SensorTypeID = SensorType.ID AND ReadingID=";
             SqlConnection conn = new SqlConnection(_static.dbconn);
             SqlCommand cmd = new SqlCommand(command, conn);
             try
@@ -27,6 +28,21 @@ namespace WebApplication.Controllers
                 output.ID = Convert.ToInt32(reader["ID"]);
                 output.TankID = Convert.ToInt32(reader["TankID"]);
                 output.time = Convert.ToDateTime(reader["ReadTime"]);
+                reader.Close();
+                command2 += output.ID.ToString();
+                SqlCommand cmd2 = new SqlCommand(command2, conn);
+                reader = cmd2.ExecuteReader();
+                reader.Read();
+                List<Sensor> sensor = new List<Sensor>();
+                do
+                {
+                    sensor.Add(new Sensor()
+                    {
+                        SensorName = reader["Name"].ToString(),
+                        SensorTypeID = Convert.ToInt32(reader["SensorTypeID"])
+                    });
+                } while (reader.Read());
+                output.sensors = sensor.ToArray();
             }
             catch { }
             finally

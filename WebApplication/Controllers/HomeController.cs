@@ -31,8 +31,21 @@ namespace WebApplication.Controllers
             
             base.Execute(requestContext);
         }
-        public ActionResult Index()
+        public ActionResult Index(int? ID)
         {
+            if (ID != null)
+            {
+                //dear employers, this does not accurately represent my abilities
+                //Dear God, I'm sorry.
+                string x = new TankController().GetLastReading(ID ?? 0);
+                Readings j = JsonConvert.DeserializeObject<Readings>(x);
+                double[] RecentReading = new double[5];
+                foreach (Sensor s in j.sensors)
+                {
+                    RecentReading[s.SensorTypeID - 1] = s.ReadingValue;
+                }
+                ViewBag.RecentReading = RecentReading;
+            }
             return View();
         }
     }
