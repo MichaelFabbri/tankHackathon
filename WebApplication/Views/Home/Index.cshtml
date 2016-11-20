@@ -88,50 +88,50 @@
             
         <div class="status-bp flex-item-scale">
             <h4> Barometric Pressure </h4>
-            <p>
+            
                 @if (ViewBag.RecentReading != null)
                 {
-                    Html.Raw(ViewBag.RecentReading[0]);
+                    <p>
+                        @ViewBag.RecentReading[0].ToString()
+                    </p>
                 }
-            </p>
+                    
         </div>
         <div class="status-temperature flex-item-scale">
              <h4> Temperature </h4>
+            @if (ViewBag.RecentReading != null)
+            {
                 <p>
-                     @if (ViewBag.RecentReading != null)
-                    {
-                        Html.Raw(ViewBag.RecentReading[1]);
-                    }
+                    @ViewBag.RecentReading[1].ToString()
                 </p>
+            }
         </div>
         <div class="status-conductivity flex-item-scale">
             <h4> Conductivity </h4>
-            <p>
-                @if (ViewBag.RecentReading != null)
-                {
-                    Html.Raw(ViewBag.RecentReading[2]);
-                }
-            </p>
-
+            @if (ViewBag.RecentReading != null)
+            {
+                <p>
+                    @ViewBag.RecentReading[2].ToString()
+                </p>
+            }
         </div>
         <div class="status-colorimeter flex-item-scale">
             <h4> Colorimeter </h4>
-            <p>
-                @if (ViewBag.RecentReading != null)
-                {
-                    Html.Raw(ViewBag.RecentReading[3]);
-                }
-            </p>
-
+            @if (ViewBag.RecentReading != null)
+            {
+                <p>
+                    @ViewBag.RecentReading[3].ToString()
+                </p>
+            }
         </div>
         <div class="status-ph flex-item-scale">
              <h4> PH Level </h4>
-            <p>
-                @if (ViewBag.RecentReading != null)
-                {
-                    Html.Raw(ViewBag.RecentReading[4]);
-                }
-            </p>
+            @if (ViewBag.RecentReading != null)
+            {
+                <p>
+                    @ViewBag.RecentReading[4].ToString()
+                </p>
+            }
         </div>
     </div>
 </div>

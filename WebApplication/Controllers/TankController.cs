@@ -39,7 +39,8 @@ namespace WebApplication.Controllers
                     sensor.Add(new Sensor()
                     {
                         SensorName = reader["Name"].ToString(),
-                        SensorTypeID = Convert.ToInt32(reader["SensorTypeID"])
+                        SensorTypeID = Convert.ToInt32(reader["SensorTypeID"]),
+                        ReadingValue = Convert.ToDouble(reader["ReadingValue"])
                     });
                 } while (reader.Read());
                 output.sensors = sensor.ToArray();
