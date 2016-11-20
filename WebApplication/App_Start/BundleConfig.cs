@@ -25,7 +25,6 @@ namespace WebApplication
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/additionaljquery").Include(
-                      "~/Scripts/jquery-ui/jquery-ui-1.10.1.custom.min.css",
                       "~/Scripts/jquery.nicescroll.js",
                       "~/Scripts/jquery.countTo.js"
                 ));
@@ -34,16 +33,11 @@ namespace WebApplication
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Scripts/jquery-ui/jquery-ui-1.10.1.custom.min.css",
                       "~/Content/slidebars.css",
                       "~/Content/style.css",
                       "~/Content/style-responsive.css",
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
-
-            bundles.Add(new ScriptBundle("~/bundles/commonjs").Include(
-                    "~/Scripts/common.scripts.js"
-                ));
         }
     }
 }
