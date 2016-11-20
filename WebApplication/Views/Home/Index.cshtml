@@ -50,13 +50,25 @@
         height : 10%;
         background-color : papayawhip;
     }   
+    .labeled-image {
+        height : 100%;
+    }
+
+    .img-label {
+        height : 20%;
+    }
 </style>
 
 <div class="status-header-area">
     <div class="status-bar-fixed flex flex-row">
         <div class="status-indicator">
-            <h3> Status </h3>
-            <img src="~/Images/ConcernIndicators/danger-indicator.png" />
+            <div class="labeled-image flex flex-column">
+                <h3 class="img-label"> Status </h3>
+                <div class="scale-to-container">
+                    <img src="~/Images/ConcernIndicators/danger-indicator.png" />
+                </div>
+                
+            </div>
         </div>
             
             
