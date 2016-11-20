@@ -59,7 +59,6 @@
     .chart-container {
         width: 80%;
         margin: 15px auto;
-}
     }
 
     .add-table-bar {
@@ -106,11 +105,9 @@
     <div class="status-bar-fixed flex flex-row">
         <div class="status-indicator">
             <div class="labeled-image flex flex-column">
-                    <img class="scale-to-container" src="~/Images/ConcernIndicators/danger-indicator.png" />
+                 <img class="scale-to-container" src="~/Images/ConcernIndicators/danger-indicator.png" />
             </div>
         </div>
-            
-            
         <div class="status-info status-bp flex-item-scale">
             <h4> Barometric Pressure </h4>
             
@@ -119,8 +116,7 @@
                     <p>
                         @ViewBag.RecentReading[0].ToString()
                     </p>
-                }
-                    
+                }   
         </div>
         <div class="status-info status-temperature flex-item-scale">
              <h4> Temperature </h4>
@@ -174,12 +170,10 @@
                 <div id="ph-toggle" class="flex-item-scale"> PH </div>
             </div>
         </div>
-        <!-- Chart Here -->
         <div class="add-table-bar">
             <h1> Display Table </h1>
         </div>
     </div>
-
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
