@@ -11,8 +11,10 @@
     <title> @ViewBag.Title - Optimizing Tank Management </title>
     @Scripts.Render("~/bundles/modernizr")
     <style>
-        * {
-            position : relative;
+        *,
+        *:after,
+        *:before {
+            box-sizing: border-box;
         }
 
         .flex {
@@ -47,6 +49,8 @@
     position: absolute;
     right: 0;
  }
+
+
 
  .tanks-display > ul {
      list-style : none;
