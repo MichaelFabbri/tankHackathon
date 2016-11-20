@@ -266,6 +266,7 @@
     <Folder Include="Scripts\bootstrap-fileinput-master\" />
     <Folder Include="Scripts\bootstrap-timepicker\" />
     <Folder Include="Scripts\bootstrap-wysihtml5\" />
+    <Folder Include="Scripts\jquery-ui\" />
     <Folder Include="Views\Static\" />
     <Folder Include="Views\Tank\" />
   </ItemGroup>
