@@ -14,7 +14,7 @@
 <body>
     <div class="container body-content">
         <section class="fixed-navigation">
-            <div class="side-nav">
+            <div class="nav nav-pills nav-stacked side-navigation">
                 <div class="tanks-toggle">
                     <div id="active-tanks-toggle"> </div>
                     <div id="all-tanks-toggle"> </div>
@@ -45,7 +45,6 @@
     <!-- @Scripts.Render("~/bundles/commonjs") -->
     @Scripts.Render("~/bundles/sidebar")
     @Scripts.Render("~/bundles/additionaljquery")
-    @Scripts.Render()
     @RenderSection("scripts", required: false)
 </body>
 </html>
