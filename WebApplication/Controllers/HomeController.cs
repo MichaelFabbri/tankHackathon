@@ -33,6 +33,7 @@ namespace WebApplication.Controllers
         }
         public ActionResult Index(int? ID)
         {
+            ViewBag.RecentReading = null;
             if (ID != null)
             {
                 //dear employers, this does not accurately represent my abilities
