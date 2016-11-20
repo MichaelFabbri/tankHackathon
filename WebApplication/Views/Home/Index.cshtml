@@ -1,7 +1,6 @@
 ﻿@{
     ViewBag.Title = "Tank Monitoring";
 }
-
 <style>
 
     .status-header-area {
@@ -222,6 +221,9 @@
                         <div id="color-toggle" class="ch-toggle-btn flex-item-scale"> Colorometer </div>
                         <div id="ph-toggle" class="ch-toggle-btn flex-item-scale"> PH </div>
                     </div>
+                    <div class="chart-toggle-buttons flex flex-row">
+                        <div id="display-all-btn" class="ch-toggle-btn flex-item-scale"> Display All </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -233,19 +235,33 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
 <script>
+    var ActiveID = ;
+    var Response = $GetJSON("@Url.Action("ActiveBranchAll","Tank",new {ID =  })");
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+            labels: [],
             datasets: [{
-                label: 'apples',
-                data: [12, 19, 3, 17, 6, 3, 7],
+                label: 'BP',
+                data: [0.1, 0.3, 0.62, .54, 0.78, 0.21, 0.7],
                 backgroundColor: "rgba(153,255,51,0.4)"
             }, {
-                label: 'oranges',
-                data: [2, 29, 5, 5, 2, 3, 10],
-                backgroundColor: "rgba(255,153,0,0.4)"
+                label: 'Temperature',
+                data: [0.2, 0.29, 0.5, 0.5, 0.2, 0.3, 0.99],
+                backgroundColor: "rgba(213,121,0,0.4)"
+            }, {
+                label: 'Conductivity',
+                data: [0.28, 0.12, 0.45, 0.58, 0.35, 0.71, 0.84],
+                backgroundColor: "rgba(155,73,0,0.4)"
+            }, {
+                label: 'Colorimeter',
+                data: [0.75, 0.89, 0.75, 0.87, 0.11, 0.76, 0.23],
+                backgroundColor: "rgba(75,64,0,0.4)"
+            }, {
+                label: 'PH',
+                data: [0.75, 0.89, 0.75, 0.87, 0.11, 0.76, 0.23],
+                backgroundColor: "rgba(182,164,0,0.4)"
             }]
         }
     });
