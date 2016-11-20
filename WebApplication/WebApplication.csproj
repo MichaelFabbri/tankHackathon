@@ -187,8 +187,16 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-fileupload.min.css" />
+    <Content Include="Content\bootstrap-reset.css" />
+    <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\default-theme.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\icomoon-weather.css" />
+    <Content Include="Content\jquery-ui-1.10.3.css" />
+    <Content Include="Content\simple-line-icons.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
